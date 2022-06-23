@@ -1,3 +1,3 @@
-players = [{ name: 'player 1', guestHistory: [], message: '', numberOfWins: 0 }];
+let players = [{ name: 'player 1', currentGuess: 0, guessHistory: [] }];
 
 module.exports = players;
