@@ -1,3 +1,3 @@
-let players = [{ name: 'player 1', currentGuess: 0, guessHistory: [] }];
+let players = [];
 
 module.exports = players;

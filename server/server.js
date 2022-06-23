@@ -24,7 +24,9 @@ app.post('/player-data', (req, res) => {
 	// console.log(req.body);
 
 	// save the response
+
 	players.push(req.body);
+	console.log(req.body);
 
 	// send back response
 	res.sendStatus(201);
