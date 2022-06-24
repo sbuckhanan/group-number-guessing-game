@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 const players = require('./modules/players.js');
-const historyArray = require('./modules/guesshistory.js');
+
+let playerOneHistory = [];
+let dataHere;
 
 // This must be added before GET & POST routes.
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,31 +26,22 @@ app.post('/player-data', (req, res) => {
 	// console.log(req.body);
 
 	// save the response
-
+	// for (let i = 0; i < req.body.length; )
 	players.push(req.body);
-	console.log(req.body);
-
+	// console.log(req.body);
+	dataHere = req.body;
+	console.log(dataHere);
+	// pushHistory();
 	// send back response
 	res.sendStatus(201);
 	// console.log(players);
 });
 
-// app.get('/guesshistory', (req, res) => {
-// 	// on the url /player-data, send the player data
-// 	console.log(historyArray);
-// 	res.send(historyArray);
-// });
-
-// app.post('/guesshistory', (req, res) => {
-// 	// the quote is here
-// 	console.log(req.body);
-// 	for (let i = 0; i < historyArray.length; i++) {
-// 		historyArray[i].push(req.body);
-// 	}
-// 	// save the response
-// 	// send back response
-// 	res.sendStatus(201);
-// });
+function pushHistory() {
+	playerOneHistory.push(dataHere[0].currentGuess);
+	players[0]['playerHistory'] = playerOneHistory;
+	// console.log(players);
+}
 
 function getRandomNumber() {
 	return Math.round(Math.random() * (25 - 1) + 1);
