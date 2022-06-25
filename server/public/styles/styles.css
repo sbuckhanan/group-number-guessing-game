@@ -1,13 +1,18 @@
+body {
+	background-color: teal;
+}
+
 table,
 th,
 td {
-	border: 1px solid;
+	border: 2px solid black;
 }
 table {
 	width: 75%;
 	text-align: center;
 	position: relative;
 	left: 175px;
+	background-color: white;
 }
 th {
 	height: 50px;
@@ -50,7 +55,6 @@ h2 {
 	transition: all 0.3s;
 	height: 35px;
 	width: 150px;
-	box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
 }
 button:hover {
 	transform: scale(1.05);
