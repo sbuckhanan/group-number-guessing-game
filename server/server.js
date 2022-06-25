@@ -4,8 +4,15 @@ const app = express();
 const PORT = 5000;
 const players = require('./modules/players.js');
 
+let dataHolder;
+let randomNumber;
+
 let playerOneHistory = [];
-let dataHere;
+let playerTwoHistory = [];
+let playerThreeHistory = [];
+let playerFourHistory = [];
+let playerFiveHistory = [];
+getRandomNumber();
 
 // This must be added before GET & POST routes.
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,31 +30,100 @@ app.get('/player-data', (req, res) => {
 
 app.post('/player-data', (req, res) => {
 	// the quote is here
-	// console.log(req.body);
-
+	dataHolder = req.body;
 	// save the response
-	// for (let i = 0; i < req.body.length; )
-	players.push(req.body);
-	// console.log(req.body);
-	dataHere = req.body;
-	console.log(dataHere);
-	// pushHistory();
+	if (players.length > 0) {
+		//? Update player One
+		players[0].playerOne.guess = dataHolder.playerOne.guess;
+		playerOneHistory.push(dataHolder.playerOne.guess);
+		//? Update player Two
+		players[0].playerTwo.guess = dataHolder.playerTwo.guess;
+		playerTwoHistory.push(dataHolder.playerTwo.guess);
+		//? Update player Three
+		players[0].playerThree.guess = dataHolder.playerThree.guess;
+		playerThreeHistory.push(dataHolder.playerThree.guess);
+		//? Update player Four
+		players[0].playerFour.guess = dataHolder.playerFour.guess;
+		playerFourHistory.push(dataHolder.playerFour.guess);
+		//? Update player Five
+		players[0].playerFive.guess = dataHolder.playerFive.guess;
+		playerFiveHistory.push(dataHolder.playerFive.guess);
+	} else {
+		//? establish player One
+		playerOneHistory.push(dataHolder.playerOne.guess);
+		dataHolder.playerOne.history = playerOneHistory;
+		//? establish player Two
+		playerTwoHistory.push(dataHolder.playerTwo.guess);
+		dataHolder.playerTwo.history = playerTwoHistory;
+		//? establish player Three
+		playerThreeHistory.push(dataHolder.playerThree.guess);
+		dataHolder.playerThree.history = playerThreeHistory;
+		//? establish player Four
+		playerFourHistory.push(dataHolder.playerFour.guess);
+		dataHolder.playerFour.history = playerFourHistory;
+		//? establish player Five
+		playerFiveHistory.push(dataHolder.playerFive.guess);
+		dataHolder.playerFive.history = playerFiveHistory;
+		players.push(dataHolder);
+	}
+	//? player one guess check to random number
+	if (Number(dataHolder.playerOne.guess) > randomNumber) {
+		players[0].playerOne.message = 'You were high!';
+	} else if (Number(dataHolder.playerOne.guess) < randomNumber) {
+		players[0].playerOne.message = 'You were Low!';
+	}
+	//? player Two guess check to random number
+	if (Number(dataHolder.playerTwo.guess) > randomNumber) {
+		players[0].playerTwo.message = 'You were high!';
+	} else if (Number(dataHolder.playerTwo.guess) < randomNumber) {
+		players[0].playerTwo.message = 'You were Low!';
+	}
+	//? player Three guess check to random number
+	if (Number(dataHolder.playerThree.guess) > randomNumber) {
+		players[0].playerThree.message = 'You were high!';
+	} else if (Number(dataHolder.playerThree.guess) < randomNumber) {
+		players[0].playerThree.message = 'You were Low!';
+	}
+	//? player Four guess check to random number
+	if (Number(dataHolder.playerFour.guess) > randomNumber) {
+		players[0].playerFour.message = 'You were high!';
+	} else if (Number(dataHolder.playerFour.guess) < randomNumber) {
+		players[0].playerFour.message = 'You were Low!';
+	}
+	//? player five guess check to random number
+	if (Number(dataHolder.playerFive.guess) > randomNumber) {
+		players[0].playerFive.message = 'You were high!';
+	} else if (Number(dataHolder.playerFive.guess) < randomNumber) {
+		players[0].playerFive.message = 'You were Low!';
+	}
+
+	//? player one guess check to random number
+	if (Number(dataHolder.playerOne.guess) === randomNumber) {
+		players[0].playerOne.message = 'YOU WIN!';
+		getRandomNumber();
+	} else if (Number(dataHolder.playerTwo.guess) === randomNumber) {
+		players[0].playerTwo.message = 'YOU WIN!';
+		getRandomNumber();
+	} else if (Number(dataHolder.playerTwo.guess) === randomNumber) {
+		players[0].playerTwo.message = 'YOU WIN!';
+		getRandomNumber();
+	} else if (Number(dataHolder.playerFour.guess) === randomNumber) {
+		players[0].playerFour.message = 'YOU WIN!';
+		getRandomNumber();
+	} else if (Number(dataHolder.playerFive.guess) === randomNumber) {
+		players[0].playerFive.message = 'YOU WIN!';
+		getRandomNumber();
+	}
+	console.log(players);
+	console.log(randomNumber);
 	// send back response
 	res.sendStatus(201);
-	// console.log(players);
 });
 
-function pushHistory() {
-	playerOneHistory.push(dataHere[0].currentGuess);
-	players[0]['playerHistory'] = playerOneHistory;
-	// console.log(players);
-}
-
 function getRandomNumber() {
-	return Math.round(Math.random() * (25 - 1) + 1);
+	randomNumber = Math.round(Math.random() * (25 - 1) + 1);
+	return randomNumber;
 }
-
-console.log(getRandomNumber());
 
 // generate random number function
 // if conditional to check each guess to the random number
