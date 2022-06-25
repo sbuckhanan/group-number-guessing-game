@@ -41,6 +41,7 @@ function handleSubmitBtn() {
 			name: playerFiveName,
 			guess: playerFiveGuess,
 		},
+		roundCount: 0,
 	};
 
 	$.ajax({
@@ -55,6 +56,12 @@ function handleSubmitBtn() {
 		.catch((error) => {
 			console.log(error);
 		});
+
+	$('#playerOneGuess').val();
+	$('#playerTwoGuess').val();
+	$('#playerThreeGuess').val();
+	$('#playerFourGuess').val();
+	$('#playerFiveGuess').val();
 }
 
 function getPlayerData() {
@@ -107,4 +114,5 @@ function renderToDom(arr) {
 			<td>${arr[0].playerFive.message}</td>
 		</tr>
 		`);
+	$('.roundsPlayed').html(`Total rounds played: ${arr[0].roundCount}`);
 }

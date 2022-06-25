@@ -6,6 +6,7 @@ const players = require('./modules/players.js');
 
 let dataHolder;
 let randomNumber;
+let roundCounter = 0;
 
 let playerOneHistory = [];
 let playerTwoHistory = [];
@@ -101,18 +102,28 @@ app.post('/player-data', (req, res) => {
 	if (Number(dataHolder.playerOne.guess) === randomNumber) {
 		players[0].playerOne.message = 'YOU WIN!';
 		getRandomNumber();
+		roundCounter++;
+		players[0].roundCount = roundCounter;
 	} else if (Number(dataHolder.playerTwo.guess) === randomNumber) {
 		players[0].playerTwo.message = 'YOU WIN!';
 		getRandomNumber();
+		roundCounter++;
+		players[0].roundCount = roundCounter;
 	} else if (Number(dataHolder.playerTwo.guess) === randomNumber) {
 		players[0].playerTwo.message = 'YOU WIN!';
 		getRandomNumber();
+		roundCounter++;
+		players[0].roundCount = roundCounter;
 	} else if (Number(dataHolder.playerFour.guess) === randomNumber) {
 		players[0].playerFour.message = 'YOU WIN!';
 		getRandomNumber();
+		roundCounter++;
+		players[0].roundCount = roundCounter;
 	} else if (Number(dataHolder.playerFive.guess) === randomNumber) {
 		players[0].playerFive.message = 'YOU WIN!';
 		getRandomNumber();
+		roundCounter++;
+		players[0].roundCount = roundCounter;
 	}
 	console.log(players);
 	console.log(randomNumber);

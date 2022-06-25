@@ -11,37 +11,76 @@
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
-		<h1>YOUR GAME HERE!</h1>
-		<div>
-			<input type="text" id="playerOneName" placeholder="Player 1" class="column-left" />
-			<input type="number" id="playerOneGuess" placeholder="Player 1 guess" class="column-right" />
-		</div>
-		<div>
-			<input type="text" id="playerTwoName" placeholder="Player 2" class="column-left" />
-			<input type="number" id="playerTwoGuess" placeholder="Player 2 guess" />
-		</div>
+		<h1>Guess the number!</h1>
+		<br />
+		<div class="inputWrapper">
+			<div>
+				<input
+					type="text"
+					class="input"
+					id="playerOneName"
+					placeholder="Player 1"
+					class="column-left"
+				/>
+				<input
+					class="input"
+					type="number"
+					id="playerOneGuess"
+					placeholder="Player 1 guess"
+					class="column-right"
+				/>
+			</div>
+			<div>
+				<input
+					type="text"
+					class="input"
+					id="playerTwoName"
+					placeholder="Player 2"
+					class="column-left"
+				/>
+				<input type="number" class="input" id="playerTwoGuess" placeholder="Player 2 guess" />
+			</div>
 
-		<div>
-			<input type="text" id="playerThreeName" placeholder="Player 3" class="column-left" />
-			<input type="number" id="playerThreeGuess" placeholder="Player 3 guess" />
-		</div>
+			<div>
+				<input
+					type="text"
+					class="input"
+					id="playerThreeName"
+					placeholder="Player 3"
+					class="column-left"
+				/>
+				<input type="number" class="input" id="playerThreeGuess" placeholder="Player 3 guess" />
+			</div>
 
-		<div>
-			<input type="text" id="playerFourName" placeholder="Player 4" class="column-left" />
-			<input type="number" id="playerFourGuess" placeholder="Player 4 guess" />
-		</div>
+			<div>
+				<input
+					type="text"
+					class="input"
+					id="playerFourName"
+					placeholder="Player 4"
+					class="column-left"
+				/>
+				<input type="number" class="input" id="playerFourGuess" placeholder="Player 4 guess" />
+			</div>
 
-		<div>
-			<input type="text" id="playerFiveName" placeholder="Player 5" class="column-left" />
-			<input type="number" id="playerFiveGuess" placeholder="Player 5 guess" />
+			<div>
+				<input
+					type="text"
+					class="input"
+					id="playerFiveName"
+					placeholder="Player 5"
+					class="column-left"
+				/>
+				<input type="number" class="input" id="playerFiveGuess" placeholder="Player 5 guess" />
+			</div>
 		</div>
-
-		<div>
-			<button class="submitBtn">Submit Guesses</button>
-			<button class="restartBtn">Restart Game</button>
+		<br />
+		<div class="buttonWrapper">
+			<button class="button submitBtn">Submit Guesses</button>
+			<button class="button restartBtn">Restart Game</button>
 		</div>
-
-		<div>
+		<br />
+		<div class="tableWrapper">
 			<table>
 				<thead>
 					<tr>
@@ -57,6 +96,6 @@
 			</table>
 		</div>
 
-		<p><span>Total rounds played:</span></p>
+		<h2><span class="roundsPlayed">Total rounds played: 0</span></h2>
 	</body>
 </html>
