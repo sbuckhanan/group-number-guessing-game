@@ -57,11 +57,11 @@ function handleSubmitBtn() {
 			console.log(error);
 		});
 
-	$('#playerOneGuess').val();
-	$('#playerTwoGuess').val();
-	$('#playerThreeGuess').val();
-	$('#playerFourGuess').val();
-	$('#playerFiveGuess').val();
+	$('#playerOneGuess').val('');
+	$('#playerTwoGuess').val('');
+	$('#playerThreeGuess').val('');
+	$('#playerFourGuess').val('');
+	$('#playerFiveGuess').val('');
 }
 
 function getPlayerData() {
